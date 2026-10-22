@@ -1,0 +1,218 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Ruta del lead Mastery</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: una sola columna estrecha tipo línea de tiempo; cada paso es lo que vive el lead, desplegable para ver el mensaje exacto */
+:root{
+  --bg:#f4f6f8; --surface:#ffffff; --sunk:#e9edf1; --fg:#17212b; --muted:#5b6875; --line:#d5dce3;
+  --accent:#0f6e74; --accent-soft:#d8eeee; --on-accent:#ffffff;
+  --sms:#2f5fd0; --sms-soft:#e3eafb; --call:#1d7a46; --call-soft:#dcf1e4;
+  --mail:#7a4fb5; --mail-soft:#eee6f8; --act:#a86400; --act-soft:#fbecd2;
+  --end:#b23b3b; --end-soft:#f7e1e1;
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"Public Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0f151b; --surface:#16202a; --sunk:#1d2935; --fg:#e4eaf0; --muted:#97a5b3; --line:#2a3846;
+  --accent:#4cc2c4; --accent-soft:#163a3d; --on-accent:#0f151b;
+  --sms:#86a8ff; --sms-soft:#1d2a4a; --call:#5fd394; --call-soft:#173a29;
+  --mail:#c3a3f2; --mail-soft:#2c2342; --act:#f0b25a; --act-soft:#3d2c12;
+  --end:#f08a8a; --end-soft:#3d1d1d; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0f151b; --surface:#16202a; --sunk:#1d2935; --fg:#e4eaf0; --muted:#97a5b3; --line:#2a3846;
+  --accent:#4cc2c4; --accent-soft:#163a3d; --on-accent:#0f151b;
+  --sms:#86a8ff; --sms-soft:#1d2a4a; --call:#5fd394; --call-soft:#173a29;
+  --mail:#c3a3f2; --mail-soft:#2c2342; --act:#f0b25a; --act-soft:#3d2c12;
+  --end:#f08a8a; --end-soft:#3d1d1d; color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--fg);font:15px/1.55 var(--body);margin:0}
+.wrap{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 64px;display:grid;gap:20px}
+h1,h2{font-family:var(--display);text-wrap:balance;margin:0;letter-spacing:-.01em}
+h1{font-size:clamp(28px,5vw,40px);line-height:1.1}
+h2{font-size:20px}
+p{margin:0}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lede{color:var(--muted);max-width:62ch}
+.pick{display:flex;flex-wrap:wrap;gap:8px}
+.sp{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--fg);font:500 13.5px var(--body);padding:8px 12px;border-radius:8px;cursor:pointer}
+.sp[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft);color:var(--accent);font-weight:600}
+.sp:focus-visible,summary:focus-visible,.tog:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.sum{font-size:14px;color:var(--muted)}
+.tog{appearance:none;border:0;background:none;color:var(--accent);font:600 13.5px var(--body);cursor:pointer;padding:4px 0}
+.tl{list-style:none;margin:0;padding:0;display:grid;gap:0;position:relative}
+.tl::before{content:"";position:absolute;left:15px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.day{font:600 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:18px 0 8px 44px}
+.day:first-child{padding-top:4px}
+.step{display:grid;grid-template-columns:32px minmax(0,1fr);gap:12px;padding:5px 0;position:relative}
+.dot{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font:600 11px var(--mono);z-index:1;border:2px solid var(--bg)}
+.dot.sms{background:var(--sms-soft);color:var(--sms)} .dot.call{background:var(--call-soft);color:var(--call)}
+.dot.mail{background:var(--mail-soft);color:var(--mail)} .dot.act{background:var(--act-soft);color:var(--act)}
+.dot.end{background:var(--end-soft);color:var(--end)} .dot.win{background:var(--call);color:var(--on-accent)}
+details{background:var(--surface);border:1px solid var(--line);border-radius:10px;min-width:0}
+summary{list-style:none;cursor:pointer;padding:10px 14px;display:grid;gap:2px}
+summary::-webkit-details-marker{display:none}
+.when{font:500 12px var(--mono);color:var(--accent);font-variant-numeric:tabular-nums}
+.what{font-weight:600}
+.what::after{content:" +";color:var(--muted);font-weight:400}
+details[open] .what::after{content:" −"}
+.what.plain::after{content:""}
+.body{padding:0 14px 12px;display:grid;gap:8px}
+.bubble{background:var(--sunk);border-radius:14px;border-bottom-left-radius:4px;padding:9px 12px;font-size:14px;max-width:52ch}
+.bubble.mine{background:var(--accent);color:var(--on-accent);border-radius:14px;border-bottom-right-radius:4px;justify-self:end}
+.note{font-size:13.5px;color:var(--muted)}
+.rules{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:grid;gap:10px}
+.rules ul{margin:0;padding-left:20px;display:grid;gap:6px}
+.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:13px;color:var(--muted);align-items:center}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:12px;height:12px;border-radius:50%;display:inline-block}
+@media (prefers-reduced-motion:no-preference){ details[open] .body{animation:in .2s ease-out} @keyframes in{from{opacity:.3;transform:translateY(-3px)}to{opacity:1;transform:none}} }
+</style>
+
+<div class="wrap">
+  <header style="display:grid;gap:8px">
+    <span class="eyebrow">Mastery Aesthetics · proceso comercial</span>
+    <h1>Ruta del lead</h1>
+    <p class="lede">Lo que vive la clínica desde que llena el formulario: qué recibe, cuándo y qué puede hacer. Elige un camino y abre cada paso para ver el mensaje. Nombres y fechas de ejemplo (Laura, Sonrisa Dental Miami; el Día 0 es un lunes).</p>
+  </header>
+
+  <div class="pick" id="pick" role="group" aria-label="Elegir camino"></div>
+  <div class="bar"><p class="sum" id="sum"></p><button class="tog" id="tog" type="button">Abrir todos</button></div>
+  <ol class="tl" id="tl"></ol>
+
+  <div class="legend" aria-label="Leyenda">
+    <span><i style="background:var(--sms)"></i>SMS</span>
+    <span><i style="background:var(--call)"></i>Llamada</span>
+    <span><i style="background:var(--mail)"></i>Correo</span>
+    <span><i style="background:var(--act)"></i>Lo que hace el lead</span>
+    <span><i style="background:var(--end)"></i>Fin del contacto</span>
+  </div>
+
+  <section class="rules">
+    <h2>Lo que el lead siempre vive, cualquiera sea el flujo</h2>
+    <ul>
+      <li>Recibe respuesta al instante si dio permiso para SMS, y una llamada en menos de 30 minutos en horario hábil (L-V 9 a. m.-5 p. m. ET).</li>
+      <li>Si no contesta, lo llaman 4 veces en 5 días hábiles, 2 timbradas cada vez.</li>
+      <li>Nunca le vuelven a preguntar lo que ya puso en el formulario. Solo le preguntan si es quien decide.</li>
+      <li>Siempre le ofrecen 2 horarios concretos (uno de mañana y otro de tarde, en días distintos) para un diagnóstico gratis de 30 minutos por videollamada.</li>
+      <li>Sin permiso para SMS: solo llamadas y correos. Con el permiso de promociones (casilla 2): también recibe los mensajes de valor del día 7 y del día 21.</li>
+      <li>Puede escribir STOP o "no me escriban" en cualquier momento y deja de recibir SMS. Si pide que no lo llamen, el contacto se detiene por completo.</li>
+      <li>Nunca recibe precios, comisiones ni cifras de garantía por mensaje: eso se ve en el diagnóstico.</li>
+      <li>Antes de firmar le piden 3 estados de cuenta para verificar que factura $10K o más al mes.</li>
+    </ul>
+  </section>
+</div>
+
+<script>
+const ICON={sms:"SMS",call:"TEL",mail:"@",act:"YO",end:"FIN",win:"✓"};
+// [día, cuándo, tipo, qué vive el lead, detalle: [["msg"|"mine"|"note", texto]]]
+const P=[
+{id:"ideal",name:"Responde, agenda y firma",sum:"El camino ideal: de la solicitud al contrato en 11 días.",s:[
+ ["Día 0 · lunes","10:00 a. m.","act","Llena el formulario en masteryaesthetics.com",[["note","Clínica, especialidad, tratamiento de mayor valor, facturación mensual, su reto, y marca las dos casillas de consentimiento."]]],
+ ["Día 0 · lunes","Al instante","sms","Recibe la confirmación de suscripción",[["msg","[Texto de confirmación registrado en la campaña A2P]"]]],
+ ["Día 0 · lunes","Al instante","sms","Recibe un SMS que usa lo que escribió y le pregunta si es quien decide",[["msg","Hola Laura, soy la asistente virtual de Mastery Aesthetics. Recibimos la solicitud de Sonrisa Dental Miami (carillas de porcelana). Nos contaste que la pauta sale de tu bolsillo y no puedes escalarla: justo eso revisamos en el diagnóstico gratis de 30 min. ¿Eres tú quien toma las decisiones de la clínica? Responde STOP para salir."]]],
+ ["Día 0 · lunes","13 min después","act","Responde el SMS",[["mine","Sí, soy la dueña. ¿De qué se trata exactamente?"]]],
+ ["Día 0 · lunes","Al instante","sms","La invitan a agendar con 2 horarios",[["msg","Gracias, Laura. En 30 min revisamos tus números y te decimos si Sonrisa Dental Miami califica a la Reactivación Asistida™ y a la Pauta Asistida™. ¿Te sirve martes 3 a las 10:00 a. m. o miércoles 4 a las 3:00 p. m. (ET)?"]]],
+ ["Día 0 · lunes","6 min después","act","Agenda por SMS y da su correo",[["mine","El martes a las 10 me sirve"],["msg","Perfecto. ¿A qué correo te envío el enlace?"],["mine","laura@sonrisadental.example"]]],
+ ["Día 0 · lunes","Al instante","sms","Recibe la confirmación de la cita",[["msg","Mastery Aesthetics: Listo, Laura: tu diagnóstico de 30 min quedó el martes 3 de noviembre a las 10:00 a. m. (hora del Este). Te llega el enlace de Google Meet por aquí y por correo. Responde STOP para salir."],["note","Desde aquí ya no le llegan llamadas de seguimiento."]]],
+ ["Día 0 · lunes","Al instante","mail","Recibe un correo con el enlace de Google Meet",[["note","Confirmación con fecha, hora (ET) y enlace de la videollamada."]]],
+ ["Día 7 · lunes","24 h antes de la cita","sms","Le recuerdan la cita y le piden confirmar",[["msg","Mastery Aesthetics: Laura, mañana a las 10:00 a. m. (ET) es tu diagnóstico. Responde SÍ para confirmar, o escríbeme si necesitas moverlo. Responde STOP para salir."],["note","También recibe un correo de recordatorio."]]],
+ ["Día 7 · lunes","Minutos después","act","Confirma",[["mine","SÍ"],["note","Si no hubiera confirmado, la llamarían ese mismo día para confirmar, y otra vez 2 horas antes de la cita."]]],
+ ["Día 8 · martes","15 min antes","sms","Recibe el enlace para entrar",[["msg","Mastery Aesthetics: Laura, en 15 minutos empezamos. Entra aquí: meet.google.com/abc-defg-hij. Responde STOP para salir."]]],
+ ["Día 8 · martes","10:00 a. m.","act","Tiene el diagnóstico de 30 min por videollamada",[["note","Con Juan Pablo. Revisan sus números, la Reactivación Asistida™ y la Pauta Asistida™, qué incluye y cuánto cuesta. Decide en la sesión."]]],
+ ["Día 8 · martes","Después de la sesión","mail","Le piden 3 estados de cuenta y la lista de pacientes",[["note","Para verificar la facturación antes de firmar. Tiene 2 días hábiles."]]],
+ ["Día 9 · miércoles","Al enviar los estados de cuenta","mail","Recibe el contrato para firmar",[]],
+ ["Día 10 · jueves","Al firmar","mail","Recibe el cobro del primer mes",[["note","Hoy lo gestiona una persona del equipo; cuando conecten Stripe será automático."]]],
+ ["Día 11 · viernes","Al pagar","win","Es cliente: arranca el onboarding",[["note","Juan Pablo la contacta para empezar."]]]
+]},
+{id:"silencio",name:"No responde nada",sum:"Recibe 5 SMS y 4 intentos de llamada en 22 días. Después ya no la contactan.",s:[
+ ["Día 0 · lunes","10:00 a. m.","act","Llena el formulario",[["note","Marca las dos casillas."]]],
+ ["Día 0 · lunes","Al instante","sms","Recibe la confirmación de suscripción y el primer SMS",[["msg","Hola Laura, soy la asistente virtual de Mastery Aesthetics. Recibimos la solicitud de Sonrisa Dental Miami (carillas de porcelana)… ¿Eres tú quien toma las decisiones de la clínica? Responde STOP para salir."]]],
+ ["Día 0 · lunes","Antes de 30 min","call","Recibe 2 llamadas seguidas que no contesta",[["note","Intento 1 de 4."]]],
+ ["Día 0 · lunes","3:00 p. m.","call","La vuelven a llamar",[["note","Intento 2. Si hubiera llenado el formulario después de la 1 p. m., sería al día siguiente a las 9 a. m."]]],
+ ["Día 1 · martes","24 h después","sms","Recibe un recordatorio corto",[["msg","Mastery Aesthetics: Laura, ¿alcanzaste a ver mi mensaje? El diagnóstico gratis de 30 min para Sonrisa Dental Miami sigue disponible. ¿Te queda mejor en la mañana o en la tarde? Responde STOP para salir."]]],
+ ["Día 2 · miércoles","10:00 a. m.","call","La llaman otra vez",[["note","Intento 3."]]],
+ ["Día 5 → lunes","10:00 a. m.","call","Último intento de llamada",[["note","Intento 4. Cae en el siguiente día hábil."]]],
+ ["Día 7 · lunes","10:00 a. m.","sms","Recibe un caso de éxito",[["msg","Mastery Aesthetics: Laura, Juan Pablo Mesa llevó una operación en EE.UU. de $6,500 en anuncios a $100,000 facturados. En el diagnóstico vemos qué parte de eso aplica a Sonrisa Dental Miami. ¿Lo agendamos? Responde STOP para salir."],["note","Solo si marcó la casilla de promociones."]]],
+ ["Día 21 · lunes","10:00 a. m.","sms","Recibe el último mensaje",[["msg","Mastery Aesthetics: Laura, último mensaje de mi parte. Si más adelante quieres revisar el crecimiento de Sonrisa Dental Miami, responde a este número y te agendamos. Responde STOP para salir."],["note","Solo si marcó la casilla de promociones."]]],
+ ["Día 22","—","end","Ya no la contactan",[["note","Si escribe o llama después, la atienden de nuevo."]]]
+]},
+{id:"llamada",name:"Sin permiso para SMS",sum:"Solo llamadas y correos. La agenda una persona por teléfono.",s:[
+ ["Día 0 · lunes","2:40 p. m.","act","Llena el formulario sin marcar la casilla de SMS",[]],
+ ["Día 0 · lunes","Antes de 30 min","call","Recibe una llamada y contesta",[["note","Juan Pablo saluda con lo que ella escribió, confirma que decide y le ofrece 2 horarios."]]],
+ ["Día 0 · lunes","En la llamada","act","Agenda por teléfono",[]],
+ ["Día 0 · lunes","Al instante","mail","Recibe un correo con la cita y el enlace de Meet",[]],
+ ["Día 2 · miércoles","24 h antes","mail","Recibe un correo de recordatorio",[]],
+ ["Día 2 · miércoles","En horario hábil","call","La llaman para confirmar",[["note","Sin SMS, la confirmación siempre es por llamada."]]],
+ ["Día 3 · jueves","2 h antes, si no confirmó","call","La llaman una vez más",[]],
+ ["Día 3 · jueves","3:00 p. m.","act","Tiene el diagnóstico",[["note","Desde aquí sigue igual que el camino ideal."]]]
+]},
+{id:"nollega",name:"Agenda pero no llega",sum:"La invitan a reagendar por SMS y la llaman 3 veces en 4 días.",s:[
+ ["Día 8 · martes","10:00 a. m.","act","No entra a la videollamada",[]],
+ ["Día 8 · martes","Minutos después","sms","Recibe una invitación a reagendar",[["msg","Mastery Aesthetics: Laura, te esperamos en el diagnóstico y no logramos conectarnos. Sin problema: ¿te sirve mañana en la mañana o en la tarde? Responde STOP para salir."],["note","Si responde, la asistente le ofrece 2 horarios y la reagenda."]]],
+ ["Día 8 · martes","Ese mismo día","call","La llaman para reagendar",[]],
+ ["Día 9 · miércoles","Al día siguiente","call","La llaman otra vez",[]],
+ ["Día 11 · viernes","Día 3","call","Último intento",[]],
+ ["Día 12","—","end","Ya no la contactan",[["note","Si reagenda en cualquier momento, vuelve a recibir los recordatorios de la nueva cita."]]]
+]},
+{id:"cancela",name:"Cancela la cita",sum:"Puede cancelar por SMS; le ofrecen otro horario y la llaman ese día.",s:[
+ ["Día 5 · sábado","11:00 a. m.","act","Escribe para cancelar",[["mine","Tengo que cancelar el martes, surgió algo"]]],
+ ["Día 5 · sábado","Al instante","sms","La cita se cancela y le ofrecen 2 horarios nuevos",[["msg","Listo, Laura, la cancelé. ¿Te sirve el jueves 5 a las 10:00 a. m. o el viernes 6 a las 3:00 p. m. (ET)?"],["note","Deja de recibir los recordatorios de la cita cancelada."]]],
+ ["Día 7 · lunes","Primer día hábil","call","La llaman para reagendar",[]],
+ ["Día 12","7 días sin nueva cita","end","Ya no la contactan",[]]
+]},
+{id:"nogracias",name:"Pide que no le escriban",sum:"Deja de recibir SMS al instante. Las llamadas siguen, salvo que también las rechace.",s:[
+ ["Día 1 · martes","10:10 a. m.","act","Escribe que no quiere más mensajes",[["mine","Por favor no me escriban más"],["note","Escribir STOP tiene el mismo efecto."]]],
+ ["Día 1 · martes","Desde ese momento","end","No recibe más SMS",[]],
+ ["Día 2 · miércoles","10:00 a. m.","call","La siguen llamando",[["note","Los intentos de llamada que faltaban siguen."]]],
+ ["Día 2 · miércoles","Si contesta","act","Pide que tampoco la llamen",[["mine","Y no me llamen tampoco"]]],
+ ["Día 2 · miércoles","Desde ese momento","end","No la contactan más por ningún medio",[["note","Si vuelve a llenar el formulario, una persona revisa el caso antes de contactarla."]]]
+]},
+{id:"nocalifica",name:"Factura menos de $10K",sum:"Un solo SMS amable. No la llaman.",s:[
+ ["Día 0 · lunes","10:00 a. m.","act","Llena el formulario con facturación menor a $10K",[]],
+ ["Día 0 · lunes","Al instante","sms","Recibe un SMS que le explica que por ahora no es el momento",[["msg","Hola Laura, gracias por tu solicitud a Mastery Aesthetics. Hoy nuestro programa está diseñado para clínicas con un volumen de facturación mayor, así que por ahora no es el momento del diagnóstico. Si eso cambia, escríbenos. Responde STOP para salir."]]],
+ ["Día 0","—","end","No la contactan más",[]]
+]},
+{id:"hablanoagenda",name:"Habla pero no agenda",sum:"Contesta, no agenda, y a los 14 días la vuelven a llamar.",s:[
+ ["Día 0 · lunes","Antes de 30 min","call","Contesta la llamada pero no agenda",[["note","Le interesa, pero no puede comprometer fecha."]]],
+ ["Día 0 · lunes","Desde ese momento","end","No le llegan más llamadas ni SMS de seguimiento",[]],
+ ["Día 3 · jueves","Cuando quiera","act","Puede escribir por SMS y le ofrecen horarios",[["mine","Sigo interesada pero esta semana estoy complicada"],["msg","Claro, Laura. ¿Te sirve el lunes 9 a las 10:00 a. m. o el martes 10 a las 3:00 p. m. (ET)?"]]],
+ ["Día 14 · lunes","14 días sin agendar","call","La vuelven a llamar",[]]
+]}
+];
+
+const $=s=>document.querySelector(s);
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let cur=P[0];
+$("#pick").innerHTML=P.map(p=>`<button type="button" class="sp" data-id="${p.id}" aria-pressed="false">${esc(p.name)}</button>`).join("");
+document.querySelectorAll(".sp").forEach(b=>b.addEventListener("click",()=>{cur=P.find(p=>p.id===b.dataset.id);draw();try{localStorage.setItem("rl-path",cur.id)}catch(e){}}));
+try{const s=localStorage.getItem("rl-path");const f=P.find(p=>p.id===s);if(f)cur=f;}catch(e){}
+
+function draw(){
+  document.querySelectorAll(".sp").forEach(b=>b.setAttribute("aria-pressed",b.dataset.id===cur.id));
+  $("#sum").textContent=cur.sum;
+  let html="",last="";
+  cur.s.forEach(([d,w,k,t,det])=>{
+    if(d!==last){html+=`<li class="day">${esc(d)}</li>`;last=d;}
+    const body=det.map(([type,x])=>type==="msg"?`<div class="bubble">${esc(x)}</div>`:type==="mine"?`<div class="bubble mine">${esc(x)}</div>`:`<p class="note">${esc(x)}</p>`).join("");
+    html+=`<li class="step"><span class="dot ${k}" aria-hidden="true">${ICON[k]}</span>`+
+      (det.length?`<details><summary><span class="when">${esc(w)}</span><span class="what">${esc(t)}</span></summary><div class="body">${body}</div></details>`
+                 :`<details><summary><span class="when">${esc(w)}</span><span class="what plain">${esc(t)}</span></summary></details>`)+`</li>`;
+  });
+  $("#tl").innerHTML=html;
+  $("#tog").textContent="Abrir todos";
+}
+$("#tog").addEventListener("click",()=>{
+  const ds=[...document.querySelectorAll("#tl details")];
+  const open=ds.some(d=>!d.open);
+  ds.forEach(d=>d.open=open);
+  $("#tog").textContent=open?"Cerrar todos":"Abrir todos";
+});
+draw();
+</script>
+
+</body></html>
